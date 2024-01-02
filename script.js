@@ -1,11 +1,16 @@
-var navtags = document.querySelectorAll('.nav-only a');
 
-for (var i = 0; i < navtags.length - 1; i++) {
+var navtags = document.querySelectorAll('.sections');
+
+for (var i = 1; i < navtags.length; i++) {
     navtags[i].addEventListener('click', function (event) {
         event.preventDefault();
 
         var target = this.textContent.trim().toLowerCase();
         var targetsection = document.getElementById(target);
+
+        if (targetsection == null) {
+            i++;
+        }
 
         var interval = setInterval(function () {
             var coordinates = targetsection.getBoundingClientRect();
